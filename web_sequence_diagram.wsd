@@ -1,0 +1,26 @@
+title Iplan
+
+User->+Iplan GUI: Create Portfolio
+note right of Iplan GUI: Define of the Agile PM System plugin (e.g. Jira)
+Iplan GUI->+Iplan GUI: Set connection string
+Iplan GUI->+Agile PM\nSystem Plugin: Test connection
+Agile PM\nSystem Plugin-->-Iplan GUI: Ok
+Iplan GUI-->-Iplan GUI:
+Iplan GUI->+Agile PM\nSystem Plugin: Get backlog items types available
+Agile PM\nSystem Plugin-->-Iplan GUI: Types of backlog items (e.g. Issue types)
+note right of Iplan GUI: Define of the backlog\n items types to be used (e.g. Epic)
+Iplan GUI->+Agile PM\nSystem Plugin: Get fields
+Agile PM\nSystem Plugin-->-Iplan GUI: Backlog items fields
+note right of Iplan GUI: Define of backlog items' fields that\n will be considered as requirements
+note right of Iplan GUI: Define of the number of cycles
+Iplan GUI-->-User: Portfolio created
+User->+Iplan GUI: Select backlog items
+Iplan GUI->+Agile PM\nSystem Plugin: Get backlog items
+Agile PM\nSystem Plugin-->-Iplan GUI: Items (e.g. Issues)
+note right of Iplan GUI: Backlog item with a\n specific status (e.g. Open)
+Iplan GUI-->-User: Backlog items selected
+User->+Iplan GUI: Plan a release
+Iplan GUI->+Iplan API: Efficiency calculation
+Iplan API-->-Iplan GUI: PEVs
+Iplan GUI->Iplan GUI: Store PEVs
+Iplan GUI-->-User: Present the most efficient plans
